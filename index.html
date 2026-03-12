@@ -1,25 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ogechi Daniel Ndubuisi — IT Infrastructure Engineer</title>
   <meta name="description" content="Senior IT Infrastructure Engineer with 8+ years building enterprise systems, networks, and cybersecurity operations across Nigeria. Based in FCT-Abuja." />
-  <meta property="og:title" content="Ogechi Daniel Ndubuisi — IT Infrastructure Engineer" />
+  <meta property="og:title"       content="Ogechi Daniel Ndubuisi — IT Infrastructure Engineer" />
   <meta property="og:description" content="8+ years in enterprise infrastructure, Cisco networking, and cybersecurity. Open to new opportunities in FCT-Abuja." />
-  <meta property="og:type" content="website" />
+  <meta property="og:type"        content="website" />
+  <meta name="twitter:card"       content="summary_large_image" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,600;1,9..144,700&family=Figtree:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ══════════════════════════════════════════
+  <!-- ── SCROLL PROGRESS BAR ──────────────────────── -->
+  <div id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ── CUSTOM CURSOR (desktop only) ─────────────── -->
+  <div id="customCursor" aria-hidden="true"></div>
+  <div id="cursorDot"    aria-hidden="true"></div>
+
+
+  <!-- ══════════════════════════════════════════════
        NAVIGATION
-  ══════════════════════════════════════════ -->
+  ═══════════════════════════════════════════════ -->
   <nav id="mainNav" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
 
@@ -35,156 +43,154 @@
         <li><a href="#contact" class="nav-cta-btn">Hire Me</a></li>
       </ul>
 
+      <!-- Nav utility buttons -->
+      <div class="nav-actions">
+        <!-- Terminal trigger -->
+        <button class="nav-icon-btn" id="openTerminal" title="Open terminal (or press ` )" aria-label="Open interactive terminal">
+          <span aria-hidden="true">&gt;_</span>
+        </button>
+        <!-- Dark / light mode toggle -->
+        <button class="nav-icon-btn" id="themeToggle" aria-label="Switch to light mode">
+          <span class="theme-icon-dark"  aria-hidden="true">🌙</span>
+          <span class="theme-icon-light" aria-hidden="true">☀️</span>
+        </button>
+      </div>
+
       <!-- Hamburger -->
-      <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
+      <button class="nav-toggle" id="navToggle"
+              aria-label="Open navigation menu"
+              aria-expanded="false"
+              aria-controls="navLinks">
         <span class="bar bar-1"></span>
         <span class="bar bar-2"></span>
         <span class="bar bar-3"></span>
       </button>
 
     </div>
-
-    <!-- Mobile drawer -->
-    <div class="nav-drawer" id="navDrawer" aria-hidden="true">
-      <ul role="list">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#certifications">Certifications</a></li>
-        <li><a href="#contact" class="drawer-cta">Hire Me →</a></li>
-      </ul>
-    </div>
   </nav>
 
-  <!-- Overlay for mobile menu -->
+  <!-- Mobile drawer -->
+  <div class="nav-drawer" id="navDrawer" aria-hidden="true">
+    <ul role="list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact" class="drawer-cta">Hire Me →</a></li>
+    </ul>
+  </div>
   <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
 
-  <!-- ══════════════════════════════════════════
+  <!-- ══════════════════════════════════════════════
        HERO
-  ══════════════════════════════════════════ -->
+  ═══════════════════════════════════════════════ -->
   <section id="hero" aria-label="Introduction">
+
+    <!-- Animated network background — the visual heart of the IT engineer brand -->
+    <canvas id="networkCanvas" aria-hidden="true"></canvas>
+
     <div class="hero-inner">
 
-      <!-- Left column: text -->
+      <!-- LEFT: Text content -->
       <div class="hero-text">
-        <div class="hero-eyebrow">
+
+        <div class="hero-eyebrow hero-stagger">
           <span class="eyebrow-dot" aria-hidden="true"></span>
           Available for Opportunities &nbsp;·&nbsp; FCT-Abuja
         </div>
 
-        <h1 class="hero-name">
+        <h1 class="hero-name hero-stagger">
           Ogechi Daniel<br>
           <span class="name-accent">Ndubuisi</span>
         </h1>
 
-        <p class="hero-role">IT Infrastructure Engineer — Systems · Network · Security</p>
+        <!-- Typing animated role line -->
+        <p class="hero-role-line hero-stagger" aria-label="IT Infrastructure Engineer specialising in Systems Engineering, Network Architecture, Cybersecurity, Infrastructure Design and IT Leadership">
+          <span id="typingText" aria-hidden="true">Systems Engineering</span><span class="cursor-blink" aria-hidden="true"></span>
+        </p>
 
-        <p class="hero-bio">
+        <p class="hero-bio hero-stagger">
           I build the infrastructure that organisations depend on — from 250-node campus networks
           and solar-backed power systems to VLAN-segmented secure environments. Eight years of
           hands-on engineering across education and enterprise sectors in Nigeria.
         </p>
 
-        <div class="hero-stats" role="list" aria-label="Key statistics">
+        <!-- Animated counters -->
+        <div class="hero-stats hero-stagger" role="list" aria-label="Key statistics">
           <div class="stat" role="listitem">
-            <div class="stat-num">8<sup>+</sup></div>
+            <div class="stat-num"><span data-target="8" aria-label="8">0</span><sup>+</sup></div>
             <div class="stat-label">Years Experience</div>
           </div>
           <div class="stat" role="listitem">
-            <div class="stat-num">250<sup>+</sup></div>
+            <div class="stat-num"><span data-target="250" aria-label="250">0</span><sup>+</sup></div>
             <div class="stat-label">Nodes Deployed</div>
           </div>
           <div class="stat" role="listitem">
-            <div class="stat-num">3</div>
+            <div class="stat-num"><span data-target="3" aria-label="3">0</span></div>
             <div class="stat-label">Institutions Served</div>
           </div>
         </div>
 
-        <div class="hero-ctas">
-          <a href="#contact" class="btn btn-primary">Hire Me &nbsp;→</a>
-          <a href="#experience" class="btn btn-outline">View My Work</a>
+        <div class="hero-ctas hero-stagger">
+          <a href="#contact"                    class="btn btn-primary">Hire Me &nbsp;→</a>
+          <a href="#experience"                 class="btn btn-outline">View My Work</a>
           <a href="NDUBUISI_OGECHI_CV.pdf" download class="btn btn-outline">↓ &nbsp;Download CV</a>
         </div>
+
+        <!-- Terminal hint -->
+        <button class="terminal-hint hero-stagger" id="openTerminal2" aria-label="Open interactive terminal">
+          <kbd>`</kbd> Press backtick to open the terminal — type <code>help</code>
+        </button>
+
       </div>
 
-      <!-- Right column: photo -->
+      <!-- RIGHT: Photo panel -->
       <div class="hero-photo-panel" aria-hidden="true">
-
-        <!-- Decorative dot-grid -->
         <div class="photo-dots"></div>
-
-        <!-- Spinning dashed ring -->
         <div class="photo-ring-spin"></div>
-
-        <!-- Solid copper arc ring -->
         <div class="photo-ring-solid"></div>
-
-        <!-- Corner accent brackets -->
         <div class="photo-bracket photo-bracket-tl"></div>
         <div class="photo-bracket photo-bracket-br"></div>
 
-        <!-- Floating skill chips -->
         <div class="photo-chip chip-top">
-          <span class="chip-icon">🔵</span> Cisco Certified
+          <span>🔵</span> Cisco Certified
         </div>
         <div class="photo-chip chip-side">
-          <span class="chip-icon">🔐</span> Security
+          <span>🔐</span> Security Specialist
         </div>
 
-        <!-- THE MAIN PHOTO FRAME -->
         <div class="photo-frame">
-
           <!--
-          ╔══════════════════════════════════════════╗
-          ║       HOW TO ADD YOUR PHOTO              ║
-          ║──────────────────────────────────────────║
-          ║  STEP 1 — Name your image file:          ║
-          ║           ogechi-ndubuisi.jpg            ║
-          ║           (portrait/vertical is best)    ║
-          ║                                          ║
-          ║  STEP 2 — Copy the file into this        ║
-          ║           same folder as index.html      ║
-          ║                                          ║
-          ║  STEP 3 — Delete the entire              ║
-          ║           <div class="photo-placeholder"> ║
-          ║           block below, and replace it    ║
-          ║           with this single line:         ║
-          ║                                          ║
-          ║  <img src="ogechi-ndubuisi.jpg"          ║
-          ║       alt="Ogechi Daniel Ndubuisi" />    ║
-          ║                                          ║
-          ║  That is all. Your photo will fill       ║
-          ║  the frame perfectly.                    ║
-          ╚══════════════════════════════════════════╝
+            ╔══════════════════════════════════╗
+            ║  Add your photo:                 ║
+            ║  1. Name file: ogechi-ndubuisi.jpg ║
+            ║  2. Place it in same folder      ║
+            ║  3. Image will fill frame        ║
+            ╚══════════════════════════════════╝
           -->
-
-           <img src="ogechi_ndubuisi.jpg" alt="Ogechi Daniel Ndubuisi" width="420" height="525" />
-
+          <img src="ogechi_ndubuisi.jpg" alt="Ogechi Daniel Ndubuisi — IT Infrastructure Engineer" width="420" height="525" />
         </div>
 
-        <!-- Availability badge — bottom centre -->
         <div class="photo-avail-badge">
           <span class="avail-dot"></span>
           Open to new roles
         </div>
 
-        <!-- Years experience badge — bottom right -->
         <div class="photo-years-badge">
           <span class="years-num">8<sup>+</sup></span>
           <span class="years-label">Years Exp.</span>
         </div>
-
       </div>
 
     </div>
   </section>
 
 
-  <!-- ══════════════════════════════════════════
+  <!-- ══════════════════════════════════════════════
        ABOUT
-  ══════════════════════════════════════════ -->
+  ═══════════════════════════════════════════════ -->
   <section class="section section-alt" id="about" aria-labelledby="about-heading">
     <div class="container">
 
@@ -244,9 +250,9 @@
   </section>
 
 
-  <!-- ══════════════════════════════════════════
-       SKILLS
-  ══════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════
+       SKILLS  —  now with animated proficiency bars
+  ═══════════════════════════════════════════════ -->
   <section class="section" id="skills" aria-labelledby="skills-heading">
     <div class="container">
 
@@ -256,10 +262,25 @@
 
       <div class="skills-grid">
 
+        <!-- Systems -->
         <div class="skill-card reveal">
           <div class="skill-card-head">
             <div class="skill-icon-wrap" aria-hidden="true">🖥️</div>
             <h3 class="skill-card-title">Systems &amp; Infrastructure</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>Windows Server</span><span>95%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="95"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>Linux (Ubuntu / Kali)</span><span>88%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="88"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>Server Deployment &amp; UPS</span><span>92%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="92"></div></div>
+            </div>
           </div>
           <div class="skill-tags">
             <span class="tag">Windows Server</span>
@@ -267,23 +288,35 @@
             <span class="tag">Kali Linux</span>
             <span class="tag">Parrot OS</span>
             <span class="tag">Hardware Diagnostics</span>
-            <span class="tag">Server Deployment</span>
-            <span class="tag">UPS Systems</span>
             <span class="tag">Solar Infrastructure</span>
           </div>
         </div>
 
+        <!-- Networking -->
         <div class="skill-card reveal">
           <div class="skill-card-head">
             <div class="skill-icon-wrap" aria-hidden="true">🌐</div>
             <h3 class="skill-card-title">Networking</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>Cisco IOS / VLAN</span><span>90%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="90"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>TCP/IP &amp; LAN/WAN</span><span>93%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="93"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>MikroTik / Ubiquiti</span><span>82%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="82"></div></div>
+            </div>
           </div>
           <div class="skill-tags">
             <span class="tag">Cisco IOS</span>
             <span class="tag">VLAN Configuration</span>
             <span class="tag">TCP/IP</span>
             <span class="tag">LAN / WAN</span>
-            <span class="tag">IP Addressing</span>
             <span class="tag">Cat6 Cabling</span>
             <span class="tag">MikroTik</span>
             <span class="tag">Ubiquiti</span>
@@ -291,27 +324,51 @@
           </div>
         </div>
 
+        <!-- Cybersecurity -->
         <div class="skill-card reveal">
           <div class="skill-card-head">
             <div class="skill-icon-wrap" aria-hidden="true">🔐</div>
             <h3 class="skill-card-title">Cybersecurity</h3>
           </div>
+          <div class="skill-bars">
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>Penetration Testing</span><span>80%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="80"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>Endpoint Security (ESET)</span><span>92%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="92"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>Incident Response</span><span>85%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="85"></div></div>
+            </div>
+          </div>
           <div class="skill-tags">
             <span class="tag">ESET Endpoint</span>
             <span class="tag">Malwarebytes</span>
-            <span class="tag">Malware Analysis</span>
             <span class="tag">Penetration Testing</span>
             <span class="tag">SIEM Concepts</span>
             <span class="tag">Log Analysis</span>
-            <span class="tag">Incident Response</span>
             <span class="tag">System Hardening</span>
           </div>
         </div>
 
+        <!-- Security & Monitoring -->
         <div class="skill-card reveal">
           <div class="skill-card-head">
             <div class="skill-icon-wrap" aria-hidden="true">📷</div>
             <h3 class="skill-card-title">Security &amp; Monitoring</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>IP Surveillance / CCTV</span><span>88%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="88"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>Access Control Systems</span><span>84%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="84"></div></div>
+            </div>
           </div>
           <div class="skill-tags">
             <span class="tag">IP Surveillance</span>
@@ -321,10 +378,21 @@
           </div>
         </div>
 
+        <!-- Operations -->
         <div class="skill-card reveal">
           <div class="skill-card-head">
             <div class="skill-icon-wrap" aria-hidden="true">📋</div>
             <h3 class="skill-card-title">Operations &amp; Leadership</h3>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>ICT Operations</span><span>95%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="95"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>Team Training &amp; Mentoring</span><span>90%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="90"></div></div>
+            </div>
           </div>
           <div class="skill-tags">
             <span class="tag">ICT Operations</span>
@@ -340,9 +408,9 @@
   </section>
 
 
-  <!-- ══════════════════════════════════════════
-       EXPERIENCE
-  ══════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════
+       EXPERIENCE  —  timeline layout
+  ═══════════════════════════════════════════════ -->
   <section class="section section-alt" id="experience" aria-labelledby="exp-heading">
     <div class="container">
 
@@ -354,7 +422,7 @@
 
         <article class="exp-item">
           <div class="exp-meta">
-            <time class="exp-period">Feb 2023 — Dec 2025</time>
+            <time class="exp-period">Feb 2023<br>Dec 2025</time>
             <div class="exp-company">De Lord's International College</div>
             <div class="exp-location">Awka, Anambra</div>
           </div>
@@ -371,7 +439,7 @@
 
         <article class="exp-item">
           <div class="exp-meta">
-            <time class="exp-period">Aug 2023 — Feb 2024</time>
+            <time class="exp-period">Aug 2023<br>Feb 2024</time>
             <div class="exp-company">MICTU, Nnamdi Azikiwe University</div>
             <div class="exp-location">Awka, Anambra</div>
           </div>
@@ -388,7 +456,7 @@
 
         <article class="exp-item">
           <div class="exp-meta">
-            <time class="exp-period">Sep 2016 — Mar 2020</time>
+            <time class="exp-period">Sep 2016<br>Mar 2020</time>
             <div class="exp-company">Patgabin Printing Press</div>
             <div class="exp-location">Uyo, Akwa Ibom</div>
           </div>
@@ -407,9 +475,9 @@
   </section>
 
 
-  <!-- ══════════════════════════════════════════
+  <!-- ══════════════════════════════════════════════
        PROJECTS
-  ══════════════════════════════════════════ -->
+  ═══════════════════════════════════════════════ -->
   <section class="section" id="projects" aria-labelledby="proj-heading">
     <div class="container">
 
@@ -469,9 +537,9 @@
   </section>
 
 
-  <!-- ══════════════════════════════════════════
+  <!-- ══════════════════════════════════════════════
        CERTIFICATIONS + EDUCATION
-  ══════════════════════════════════════════ -->
+  ═══════════════════════════════════════════════ -->
   <section class="section section-alt" id="certifications" aria-labelledby="certs-heading">
     <div class="container">
 
@@ -483,35 +551,35 @@
 
         <div class="certs-list">
           <div class="cert-card reveal">
-            <div class="cert-badge cisco" aria-label="Cisco">🔵</div>
+            <div class="cert-badge cisco">🔵</div>
             <div class="cert-info">
               <strong>Cisco Networking Basics</strong>
               <span>Cisco Networking Academy</span>
             </div>
           </div>
           <div class="cert-card reveal">
-            <div class="cert-badge cisco" aria-label="Cisco">🔵</div>
+            <div class="cert-badge cisco">🔵</div>
             <div class="cert-info">
               <strong>Networking Devices &amp; Initial Configuration</strong>
               <span>Cisco Networking Academy</span>
             </div>
           </div>
           <div class="cert-card reveal">
-            <div class="cert-badge cisco" aria-label="Cisco">🔵</div>
+            <div class="cert-badge cisco">🔵</div>
             <div class="cert-info">
               <strong>Cisco Endpoint Security</strong>
               <span>Cisco Networking Academy</span>
             </div>
           </div>
           <div class="cert-card reveal">
-            <div class="cert-badge cisco" aria-label="Cisco">🔵</div>
+            <div class="cert-badge cisco">🔵</div>
             <div class="cert-info">
               <strong>Cisco Cybersecurity Specialist</strong>
               <span>Cisco Networking Academy</span>
             </div>
           </div>
           <div class="cert-card reveal">
-            <div class="cert-badge ibm" aria-label="IBM">🟦</div>
+            <div class="cert-badge ibm">🟦</div>
             <div class="cert-info">
               <strong>IBM Cybersecurity Specialist Professional</strong>
               <span>IBM · Coursera</span>
@@ -550,9 +618,9 @@
   </section>
 
 
-  <!-- ══════════════════════════════════════════
+  <!-- ══════════════════════════════════════════════
        CONTACT
-  ══════════════════════════════════════════ -->
+  ═══════════════════════════════════════════════ -->
   <section class="section contact-section" id="contact" aria-labelledby="contact-heading">
     <div class="container">
 
@@ -581,10 +649,12 @@
               FCT-Abuja, Nigeria
             </div>
             <!--
-              Add LinkedIn — uncomment and fill in your URL:
-              <a href="https://linkedin.com/in/YOUR-PROFILE" target="_blank" rel="noopener" class="contact-row">
-                <span class="contact-row-icon">in</span>
-                linkedin.com/in/your-profile
+              ══ LINKEDIN — uncomment and add your URL ══
+              <a href="https://linkedin.com/in/YOUR-PROFILE"
+                 target="_blank" rel="noopener noreferrer"
+                 class="contact-row">
+                <span class="contact-row-icon" style="font-family:sans-serif;font-weight:700;font-size:.8rem">in</span>
+                linkedin.com/in/ogechi-ndubuisi
               </a>
             -->
           </div>
@@ -592,16 +662,14 @@
 
         <div class="reveal">
           <!--
-            ═══ FORMSPREE SETUP (5 minutes, free) ══════════
-            1. Go to formspree.io → sign up free
-            2. Click "+ New Form" → copy the endpoint URL
-            3. Replace YOUR_FORMSPREE_URL below with it
-               e.g.  action="https://formspree.io/f/abcdefgh"
-            ═══════════════════════════════════════════════
+            ══ FORMSPREE ════════════════════════════════
+            Replace YOUR_FORMSPREE_ID with your real ID
+            e.g.  action="https://formspree.io/f/abcdefgh"
+            ═════════════════════════════════════════════
           -->
           <form id="contactForm"
                 class="contact-form"
-                action="https://formspree.io/f/xreyqnab"
+                action="https://formspree.io/f/YOUR_FORMSPREE_ID"
                 method="POST">
 
             <div class="form-row">
@@ -652,13 +720,13 @@
   </section>
 
 
-  <!-- ══════════════════════════════════════════
+  <!-- ══════════════════════════════════════════════
        FOOTER
-  ══════════════════════════════════════════ -->
+  ═══════════════════════════════════════════════ -->
   <footer role="contentinfo">
     <div class="footer-inner">
       <span class="footer-copy">
-        © 2025 <a href="#hero">Ogechi Daniel Ndubuisi</a> · ogechindubuisi.com
+        © 2025 <a href="#hero">Ogechi Daniel Ndubuisi</a>
       </span>
       <div class="footer-status">
         <span class="status-dot" aria-hidden="true"></span>
@@ -668,6 +736,58 @@
     </div>
   </footer>
 
+
+  <!-- ══════════════════════════════════════════════
+       TERMINAL EASTER EGG PANEL
+       Open with:  ` (backtick key)  OR  >_ button
+  ═══════════════════════════════════════════════ -->
+  <div id="terminalPanel" role="dialog" aria-label="Interactive terminal" aria-modal="true">
+    <div class="term-header">
+      <div class="term-dots" aria-hidden="true">
+        <div class="term-dot"></div>
+        <div class="term-dot"></div>
+        <div class="term-dot"></div>
+      </div>
+      <span class="term-title">ogechi@portfolio:~</span>
+      <button id="termClose" aria-label="Close terminal">✕</button>
+    </div>
+    <div id="termOutput" aria-live="polite" aria-label="Terminal output"></div>
+    <div class="term-input-row">
+      <span aria-hidden="true">ogechi@portfolio:~$</span>
+      <input type="text" id="termInput" placeholder="type a command…" autocomplete="off" spellcheck="false" aria-label="Terminal input" />
+    </div>
+  </div>
+
+
+  <!-- ── small CSS patch for theme icon visibility ─ -->
+  <style>
+    .theme-icon-light { display: none; }
+    [data-theme="light"] .theme-icon-dark  { display: none; }
+    [data-theme="light"] .theme-icon-light { display: inline; }
+    /* second terminal button alias */
+    button#openTerminal2 {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: .75rem;
+      color: var(--text-muted);
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 28px;
+      transition: border-color .25s, color .25s;
+    }
+    button#openTerminal2:hover { border-color: var(--copper); color: var(--copper); }
+    button#openTerminal2 kbd {
+      background: var(--copper-faint);
+      border: 1px solid var(--copper);
+      color: var(--copper);
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+  </style>
 
   <script src="script.js"></script>
 </body>
