@@ -7,1130 +7,96 @@
   <meta name="description" content="Senior IT Infrastructure Engineer with 8+ years building enterprise systems, networks, and cybersecurity operations across Nigeria. Based in FCT-Abuja." />
   <meta property="og:title" content="Ogechi Daniel Ndubuisi — IT Infrastructure Engineer" />
   <meta property="og:description" content="8+ years in enterprise infrastructure, Cisco networking, and cybersecurity. Open to new opportunities in FCT-Abuja." />
+  <meta property="og:type" content="website" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,300;1,9..144,600&family=Figtree:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,600;1,9..144,700&family=Figtree:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <style>
-    /* ─────────────────────────────────────────
-       DESIGN TOKENS
-    ───────────────────────────────────────── */
-    :root {
-      --cream:       #F7F3EE;
-      --cream-dark:  #EDE8E1;
-      --white:       #FFFFFF;
-      --ink:         #1C1917;
-      --ink-mid:     #44403C;
-      --ink-light:   #78716C;
-      --ink-faint:   #A8A29E;
-      --copper:      #C2692A;
-      --copper-dark: #A3561F;
-      --copper-light:#E8845A;
-      --copper-bg:   #FDF0E8;
-      --border:      #DDD8D1;
-      --border-light:#EAE6E0;
-      --shadow-sm:   0 1px 3px rgba(28,25,23,0.06), 0 1px 2px rgba(28,25,23,0.04);
-      --shadow-md:   0 4px 16px rgba(28,25,23,0.08), 0 2px 6px rgba(28,25,23,0.05);
-      --shadow-lg:   0 16px 48px rgba(28,25,23,0.12), 0 4px 16px rgba(28,25,23,0.06);
-      --font-serif:  'Fraunces', Georgia, serif;
-      --font-sans:   'Figtree', system-ui, sans-serif;
-      --font-mono:   'IBM Plex Mono', monospace;
-      --radius:      10px;
-      --radius-sm:   6px;
-      --max-w:       1140px;
-    }
-
-    /* ─────────────────────────────────────────
-       RESET & BASE
-    ───────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body {
-      background: var(--cream);
-      color: var(--ink);
-      font-family: var(--font-sans);
-      font-weight: 400;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-
-    /* ─────────────────────────────────────────
-       LAYOUT HELPERS
-    ───────────────────────────────────────── */
-    .container {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 5%;
-    }
-
-    /* ─────────────────────────────────────────
-       NAVIGATION
-    ───────────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 200;
-      background: rgba(247,243,238,0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-light);
-      transition: box-shadow 0.3s;
-    }
-    nav.scrolled { box-shadow: var(--shadow-sm); }
-
-    .nav-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 5%;
-      height: 66px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo {
-      font-family: var(--font-serif);
-      font-size: 20px;
-      font-weight: 700;
-      font-style: italic;
-      color: var(--ink);
-      letter-spacing: -0.5px;
-    }
-    .nav-logo em { color: var(--copper); font-style: normal; }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--ink-light);
-      transition: color 0.2s;
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -3px; left: 0; right: 0;
-      height: 1.5px;
-      background: var(--copper);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.25s;
-    }
-    .nav-links a:hover { color: var(--ink); }
-    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
-    .nav-links a.active { color: var(--ink); }
-
-    .nav-contact-btn {
-      font-size: 13px !important;
-      font-weight: 600 !important;
-      color: var(--white) !important;
-      background: var(--copper);
-      padding: 9px 22px;
-      border-radius: 50px;
-      transition: background 0.2s, transform 0.2s !important;
-    }
-    .nav-contact-btn::after { display: none !important; }
-    .nav-contact-btn:hover {
-      background: var(--copper-dark) !important;
-      transform: translateY(-1px) !important;
-    }
-
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-    }
-    .nav-toggle span {
-      display: block;
-      width: 24px; height: 2px;
-      background: var(--ink);
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-
-    /* ─────────────────────────────────────────
-       HERO
-    ───────────────────────────────────────── */
-    #hero {
-      padding: 130px 0 80px;
-      background: var(--cream);
-    }
-
-    .hero-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 5%;
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 64px;
-      align-items: center;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--copper);
-      background: var(--copper-bg);
-      border: 1px solid rgba(194,105,42,0.2);
-      padding: 6px 14px;
-      border-radius: 50px;
-      margin-bottom: 28px;
-    }
-    .eyebrow-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--copper);
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-    @keyframes pulse-dot {
-      0%,100% { opacity:1; transform:scale(1); }
-      50%      { opacity:0.4; transform:scale(0.7); }
-    }
-
-    .hero-name {
-      font-family: var(--font-serif);
-      font-size: clamp(40px, 5.5vw, 72px);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: -2px;
-      color: var(--ink);
-      margin-bottom: 6px;
-    }
-    .hero-name .line2 {
-      color: var(--copper);
-      font-style: italic;
-    }
-
-    .hero-role {
-      font-size: 18px;
-      font-weight: 500;
-      color: var(--ink-mid);
-      margin-bottom: 28px;
-    }
-
-    .hero-bio {
-      font-size: 16px;
-      line-height: 1.85;
-      color: var(--ink-mid);
-      max-width: 520px;
-      margin-bottom: 44px;
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 40px;
-      padding: 28px 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 40px;
-    }
-    .stat { text-align: left; }
-    .stat-num {
-      font-family: var(--font-serif);
-      font-size: 38px;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .stat-num sup {
-      font-size: 20px;
-      vertical-align: super;
-      color: var(--copper);
-    }
-    .stat-label {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--ink-faint);
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .hero-ctas {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      font-family: var(--font-sans);
-      font-size: 14px;
-      font-weight: 600;
-      border-radius: 50px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.22s ease;
-      text-decoration: none;
-      line-height: 1;
-    }
-    .btn-primary {
-      background: var(--ink);
-      color: var(--white);
-    }
-    .btn-primary:hover {
-      background: var(--copper);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(194,105,42,0.3);
-    }
-    .btn-outline {
-      background: transparent;
-      color: var(--ink);
-      border: 1.5px solid var(--border);
-    }
-    .btn-outline:hover {
-      border-color: var(--ink);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-sm);
-    }
-
-    /* ── HERO PHOTO PANEL ── */
-    .hero-photo-panel {
-      position: relative;
-    }
-    .photo-frame {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      background: var(--cream-dark);
-      aspect-ratio: 4/5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow-lg);
-    }
-    .photo-placeholder {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-      padding: 40px;
-      text-align: center;
-    }
-    .photo-placeholder-icon {
-      width: 100px; height: 100px;
-      border-radius: 50%;
-      background: var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 44px;
-    }
-    .photo-placeholder p {
-      font-size: 13px;
-      color: var(--ink-faint);
-      line-height: 1.6;
-      font-family: var(--font-mono);
-    }
-    .photo-placeholder strong {
-      display: block;
-      font-size: 12px;
-      font-family: var(--font-mono);
-      color: var(--copper);
-      font-weight: 500;
-      margin-top: 4px;
-    }
-
-    /* Replace placeholder with real photo: */
-    
-      .photo-frame img {
-        width: 100%; height: 100%;
-        object-fit: cover;
-        object-position: top center;
-      }
-   
-
-    .photo-badge {
-      position: absolute;
-      bottom: -18px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 50px;
-      padding: 10px 22px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--ink);
-      box-shadow: var(--shadow-md);
-      white-space: nowrap;
-    }
-    .badge-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: #22C55E;
-      box-shadow: 0 0 0 2px rgba(34,197,94,0.25);
-    }
-
-    .photo-decoration {
-      position: absolute;
-      top: -16px; right: -16px;
-      width: 80px; height: 80px;
-      border: 2px solid var(--copper);
-      border-radius: 50%;
-      opacity: 0.25;
-    }
-    .photo-decoration-2 {
-      position: absolute;
-      bottom: 20px; left: -24px;
-      width: 48px; height: 48px;
-      background: var(--copper-bg);
-      border: 1.5px solid rgba(194,105,42,0.3);
-      border-radius: var(--radius-sm);
-      transform: rotate(12deg);
-    }
-
-    /* ─────────────────────────────────────────
-       SECTION COMMONS
-    ───────────────────────────────────────── */
-    .section {
-      padding: 100px 0;
-    }
-    .section-alt { background: var(--white); }
-
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--copper);
-      margin-bottom: 16px;
-    }
-    .section-label::before {
-      content: '';
-      display: block;
-      width: 24px; height: 1.5px;
-      background: var(--copper);
-    }
-
-    .section-heading {
-      font-family: var(--font-serif);
-      font-size: clamp(30px, 4vw, 48px);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -1.5px;
-      color: var(--ink);
-      margin-bottom: 16px;
-    }
-    .section-heading em {
-      color: var(--copper);
-      font-style: italic;
-    }
-
-    .section-subheading {
-      font-size: 16px;
-      color: var(--ink-light);
-      max-width: 520px;
-      line-height: 1.8;
-      margin-bottom: 56px;
-    }
-
-    /* ─────────────────────────────────────────
-       ABOUT
-    ───────────────────────────────────────── */
-    #about .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .about-text p {
-      font-size: 16px;
-      color: var(--ink-mid);
-      line-height: 1.9;
-      margin-bottom: 20px;
-    }
-    .about-text p:last-child { margin-bottom: 0; }
-    .about-text strong { color: var(--ink); font-weight: 600; }
-
-    .about-card-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .about-card {
-      background: var(--cream);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius);
-      padding: 24px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .about-card:hover {
-      border-color: var(--border);
-      transform: translateY(-3px);
-    }
-    .about-card-icon {
-      font-size: 26px;
-      margin-bottom: 12px;
-    }
-    .about-card-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      margin-bottom: 4px;
-    }
-    .about-card-value {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--ink);
-      line-height: 1.4;
-    }
-    .about-card-value .accent { color: var(--copper); }
-
-    /* ─────────────────────────────────────────
-       SKILLS
-    ───────────────────────────────────────── */
-    #skills { background: var(--white); }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .skill-card {
-      background: var(--cream);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius);
-      padding: 30px;
-      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
-      position: relative;
-      overflow: hidden;
-    }
-    .skill-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--copper);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.35s ease;
-    }
-    .skill-card:hover {
-      border-color: var(--border);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-4px);
-    }
-    .skill-card:hover::before { transform: scaleX(1); }
-
-    .skill-card-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-    .skill-card-icon-wrap {
-      width: 42px; height: 42px;
-      border-radius: var(--radius-sm);
-      background: var(--copper-bg);
-      border: 1px solid rgba(194,105,42,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      flex-shrink: 0;
-    }
-    .skill-card-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--ink);
-      letter-spacing: -0.2px;
-    }
-
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-    .skill-tag {
-      font-size: 12px;
-      font-weight: 500;
-      padding: 5px 11px;
-      border-radius: 50px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      color: var(--ink-mid);
-      transition: background 0.18s, border-color 0.18s, color 0.18s;
-    }
-    .skill-tag:hover {
-      background: var(--copper-bg);
-      border-color: rgba(194,105,42,0.3);
-      color: var(--copper-dark);
-    }
-
-    /* ─────────────────────────────────────────
-       EXPERIENCE
-    ───────────────────────────────────────── */
-    .exp-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      border: 1px solid var(--border-light);
-      border-radius: 14px;
-      overflow: hidden;
-      background: var(--white);
-    }
-
-    .exp-item {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      border-bottom: 1px solid var(--border-light);
-      transition: background 0.2s;
-    }
-    .exp-item:last-child { border-bottom: none; }
-    .exp-item:hover { background: var(--cream); }
-
-    .exp-meta {
-      padding: 32px 28px;
-      border-right: 1px solid var(--border-light);
-      background: var(--cream);
-    }
-    .exp-period {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--copper);
-      letter-spacing: 0.5px;
-      margin-bottom: 8px;
-    }
-    .exp-company {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--ink);
-      line-height: 1.4;
-    }
-    .exp-location {
-      font-size: 12px;
-      color: var(--ink-faint);
-      margin-top: 4px;
-    }
-
-    .exp-body {
-      padding: 32px 36px;
-    }
-    .exp-role {
-      font-family: var(--font-serif);
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--ink);
-      letter-spacing: -0.5px;
-      margin-bottom: 20px;
-    }
-    .exp-bullets {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 11px;
-    }
-    .exp-bullets li {
-      font-size: 14.5px;
-      color: var(--ink-mid);
-      padding-left: 20px;
-      position: relative;
-      line-height: 1.65;
-    }
-    .exp-bullets li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 10px;
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--copper);
-      flex-shrink: 0;
-    }
-
-    /* ─────────────────────────────────────────
-       PROJECTS
-    ───────────────────────────────────────── */
-    #projects { background: var(--white); }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    .project-card {
-      background: var(--cream);
-      border: 1px solid var(--border-light);
-      border-radius: 14px;
-      padding: 36px;
-      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    .project-card:hover {
-      border-color: rgba(194,105,42,0.3);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-4px);
-    }
-
-    .project-icon {
-      font-size: 30px;
-      margin-bottom: 20px;
-    }
-    .project-title {
-      font-family: var(--font-serif);
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 14px;
-      letter-spacing: -0.5px;
-      line-height: 1.3;
-    }
-    .project-desc {
-      font-size: 14px;
-      color: var(--ink-light);
-      line-height: 1.8;
-      flex: 1;
-      margin-bottom: 24px;
-    }
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-    .project-tag {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 500;
-      padding: 4px 10px;
-      border-radius: 4px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      color: var(--ink-light);
-    }
-
-    /* ─────────────────────────────────────────
-       CERTIFICATIONS
-    ───────────────────────────────────────── */
-    .certs-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    .certs-list {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .cert-card {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      padding: 20px 24px;
-      background: var(--cream);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius);
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .cert-card:hover {
-      border-color: rgba(194,105,42,0.3);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .cert-badge {
-      width: 44px; height: 44px;
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      flex-shrink: 0;
-    }
-    .cert-badge.cisco { background: #E8F4FD; }
-    .cert-badge.ibm   { background: #EDF3FD; }
-
-    .cert-info strong {
-      display: block;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 3px;
-      line-height: 1.4;
-    }
-    .cert-info span {
-      font-size: 12px;
-      color: var(--ink-faint);
-      font-family: var(--font-mono);
-    }
-
-    /* ── Education aside ── */
-    .edu-aside {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .edu-card {
-      background: var(--cream);
-      border: 1px solid var(--border-light);
-      border-radius: 14px;
-      padding: 28px;
-    }
-    .edu-card-label {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--copper);
-      margin-bottom: 12px;
-    }
-    .edu-degree {
-      font-family: var(--font-serif);
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 4px;
-      line-height: 1.3;
-    }
-    .edu-school {
-      font-size: 13px;
-      color: var(--ink-light);
-    }
-
-    .affil-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .affil-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .affil-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-    .affil-text strong {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 2px;
-    }
-    .affil-text span { font-size: 12px; color: var(--ink-faint); }
-
-    /* ─────────────────────────────────────────
-       CONTACT
-    ───────────────────────────────────────── */
-    #contact {
-      background: var(--ink);
-      color: var(--cream);
-    }
-
-    #contact .section-label { color: var(--copper-light); }
-    #contact .section-label::before { background: var(--copper-light); }
-    #contact .section-heading { color: var(--cream); }
-    #contact .section-heading em { color: var(--copper-light); }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .contact-info p {
-      font-size: 15px;
-      color: #A8A29E;
-      line-height: 1.85;
-      margin-bottom: 36px;
-    }
-
-    .contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    .contact-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 16px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      color: #C4BEB7;
-      font-size: 14px;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .contact-row:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
-    .contact-row:hover { color: var(--copper-light); }
-    .contact-row-icon {
-      width: 36px; height: 36px;
-      border-radius: var(--radius-sm);
-      background: rgba(255,255,255,0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-      flex-shrink: 0;
-    }
-
-    /* FORM */
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-    .form-group label {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      color: #78716C;
-      text-transform: uppercase;
-    }
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--radius-sm);
-      padding: 13px 16px;
-      color: var(--cream);
-      font-family: var(--font-sans);
-      font-size: 14px;
-      outline: none;
-      transition: border-color 0.2s, background 0.2s;
-      -webkit-appearance: none;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--copper-light);
-      background: rgba(255,255,255,0.09);
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: #57534E; }
-    .form-group textarea { height: 130px; resize: none; }
-    .form-group select option { background: #2C2520; }
-
-    .form-btn {
-      background: var(--copper);
-      color: var(--white);
-      border: none;
-      padding: 15px 32px;
-      border-radius: 50px;
-      font-family: var(--font-sans);
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-      align-self: flex-start;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .form-btn:hover {
-      background: var(--copper-light);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(194,105,42,0.35);
-    }
-
-    .form-note {
-      font-size: 12px;
-      color: #57534E;
-      margin-top: -6px;
-      line-height: 1.6;
-    }
-    .form-success {
-      display: none;
-      background: rgba(34,197,94,0.12);
-      border: 1px solid rgba(34,197,94,0.25);
-      border-radius: var(--radius-sm);
-      padding: 14px 18px;
-      font-size: 13px;
-      color: #86EFAC;
-    }
-
-    /* ─────────────────────────────────────────
-       FOOTER
-    ───────────────────────────────────────── */
-    footer {
-      background: #141210;
-      padding: 28px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .footer-copy {
-      font-size: 13px;
-      color: #57534E;
-    }
-    .footer-copy a {
-      color: var(--copper);
-      text-decoration: none;
-    }
-    .footer-status {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      color: #78716C;
-    }
-    .status-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: #22C55E;
-      box-shadow: 0 0 0 2px rgba(34,197,94,0.2);
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-
-    /* ─────────────────────────────────────────
-       SCROLL ANIMATIONS
-    ───────────────────────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
-                  transform 0.7s cubic-bezier(0.16,1,0.3,1);
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-
-    /* ─────────────────────────────────────────
-       RESPONSIVE
-    ───────────────────────────────────────── */
-    @media (max-width: 1024px) {
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
-      .about-grid  { grid-template-columns: 1fr; gap: 48px; }
-    }
-
-    @media (max-width: 860px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-photo-panel { display: none; }
-      .exp-item { grid-template-columns: 1fr; }
-      .exp-meta { border-right: none; border-bottom: 1px solid var(--border-light); }
-      .projects-grid { grid-template-columns: 1fr; }
-      .certs-layout  { grid-template-columns: 1fr; }
-      .contact-grid  { grid-template-columns: 1fr; gap: 48px; }
-      .form-row      { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 640px) {
-      .nav-links  { display: none; }
-      .nav-toggle { display: flex; }
-      .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        position: fixed;
-        top: 66px; left: 0; right: 0;
-        background: rgba(247,243,238,0.98);
-        backdrop-filter: blur(20px);
-        padding: 24px 5% 32px;
-        border-bottom: 1px solid var(--border);
-        gap: 18px;
-      }
-      .hero-stats { gap: 24px; }
-      .skills-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ════════════════════════════════════
+  <!-- ══════════════════════════════════════════
        NAVIGATION
-  ════════════════════════════════════ -->
-  <nav id="mainNav">
+  ══════════════════════════════════════════ -->
+  <nav id="mainNav" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
-      <a href="#hero" class="nav-logo">Ogechi <em>N.</em></a>
-      <ul class="nav-links" id="navLinks">
+
+      <a href="#hero" class="nav-logo" aria-label="Home">Ogechi <em>N.</em></a>
+
+      <!-- Desktop links -->
+      <ul class="nav-links" id="navLinks" role="list">
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#certifications">Certifications</a></li>
-        <li><a href="#contact" class="nav-contact-btn">Hire Me</a></li>
+        <li><a href="#contact" class="nav-cta-btn">Hire Me</a></li>
       </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
-        <span></span><span></span><span></span>
+
+      <!-- Hamburger -->
+      <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
       </button>
+
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="nav-drawer" id="navDrawer" aria-hidden="true">
+      <ul role="list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact" class="drawer-cta">Hire Me →</a></li>
+      </ul>
     </div>
   </nav>
 
+  <!-- Overlay for mobile menu -->
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
-  <!-- ════════════════════════════════════
+
+  <!-- ══════════════════════════════════════════
        HERO
-  ════════════════════════════════════ -->
-  <section id="hero">
+  ══════════════════════════════════════════ -->
+  <section id="hero" aria-label="Introduction">
     <div class="hero-inner">
-      <!-- Left: Text -->
-      <div>
+
+      <!-- Left column: text -->
+      <div class="hero-text">
         <div class="hero-eyebrow">
-          <span class="eyebrow-dot"></span>
-          Available for Opportunities · FCT-Abuja
+          <span class="eyebrow-dot" aria-hidden="true"></span>
+          Available for Opportunities &nbsp;·&nbsp; FCT-Abuja
         </div>
+
         <h1 class="hero-name">
           Ogechi Daniel<br>
-          <span class="line2">Ndubuisi</span>
+          <span class="name-accent">Ndubuisi</span>
         </h1>
+
         <p class="hero-role">IT Infrastructure Engineer — Systems · Network · Security</p>
+
         <p class="hero-bio">
           I build the infrastructure that organisations depend on — from 250-node campus networks
           and solar-backed power systems to VLAN-segmented secure environments. Eight years of
           hands-on engineering across education and enterprise sectors in Nigeria.
         </p>
 
-        <div class="hero-stats">
-          <div class="stat">
+        <div class="hero-stats" role="list" aria-label="Key statistics">
+          <div class="stat" role="listitem">
             <div class="stat-num">8<sup>+</sup></div>
             <div class="stat-label">Years Experience</div>
           </div>
-          <div class="stat">
+          <div class="stat" role="listitem">
             <div class="stat-num">250<sup>+</sup></div>
             <div class="stat-label">Nodes Deployed</div>
           </div>
-          <div class="stat">
+          <div class="stat" role="listitem">
             <div class="stat-num">3</div>
             <div class="stat-label">Institutions Served</div>
           </div>
@@ -1139,49 +105,96 @@
         <div class="hero-ctas">
           <a href="#contact" class="btn btn-primary">Hire Me &nbsp;→</a>
           <a href="#experience" class="btn btn-outline">View My Work</a>
-          <a href="NDUBUISI_OGECHI_CV.pdf" download class="btn btn-outline">↓ Download CV</a>
+          <a href="NDUBUISI_OGECHI_CV.pdf" download class="btn btn-outline">↓ &nbsp;Download CV</a>
         </div>
       </div>
 
-      <!-- Right: Photo -->
-      <div class="hero-photo-panel">
-        <div class="photo-decoration"></div>
-        <div class="photo-decoration-2"></div>
+      <!-- Right column: photo -->
+      <div class="hero-photo-panel" aria-hidden="true">
 
-        <div class="photo-frame">
-          <!--
-            ── HOW TO ADD YOUR PHOTO ──────────────────────────
-            1. Name your photo file:  ogechi-ndubuisi.jpg
-            2. Place it in the same folder as index.html
-            3. Replace the .photo-placeholder div below with:
+        <!-- Decorative dot-grid -->
+        <div class="photo-dots"></div>
 
-            <img src="ogechi-ndubuisi.jpg" alt="Ogechi Daniel Ndubuisi" />
+        <!-- Spinning dashed ring -->
+        <div class="photo-ring-spin"></div>
 
-            ─────────────────────────────────────────────────
-          -->
-          <div class="photo-placeholder">
-            <img src="ogechi_ndubuisi.jpg" alt="Ogechi Daniel Ndubuisi" />
-          </div>
+        <!-- Solid copper arc ring -->
+        <div class="photo-ring-solid"></div>
+
+        <!-- Corner accent brackets -->
+        <div class="photo-bracket photo-bracket-tl"></div>
+        <div class="photo-bracket photo-bracket-br"></div>
+
+        <!-- Floating skill chips -->
+        <div class="photo-chip chip-top">
+          <span class="chip-icon">🔵</span> Cisco Certified
+        </div>
+        <div class="photo-chip chip-side">
+          <span class="chip-icon">🔐</span> Cybersecurity
         </div>
 
-        <div class="photo-badge">
-          <div class="badge-dot"></div>
+        <!-- THE MAIN PHOTO FRAME -->
+        <div class="photo-frame">
+
+          <!--
+          ╔══════════════════════════════════════════╗
+          ║       HOW TO ADD YOUR PHOTO              ║
+          ║──────────────────────────────────────────║
+          ║  STEP 1 — Name your image file:          ║
+          ║           ogechi-ndubuisi.jpg            ║
+          ║           (portrait/vertical is best)    ║
+          ║                                          ║
+          ║  STEP 2 — Copy the file into this        ║
+          ║           same folder as index.html      ║
+          ║                                          ║
+          ║  STEP 3 — Delete the entire              ║
+          ║           <div class="photo-placeholder"> ║
+          ║           block below, and replace it    ║
+          ║           with this single line:         ║
+          ║                                          ║
+          ║  <img src="ogechi-ndubuisi.jpg"          ║
+          ║       alt="Ogechi Daniel Ndubuisi" />    ║
+          ║                                          ║
+          ║  That is all. Your photo will fill       ║
+          ║  the frame perfectly.                    ║
+          ╚══════════════════════════════════════════╝
+          -->
+
+           <img src="ogechi_ndubuisi.jpg" alt="Ogechi Daniel Ndubuisi" width="420" height="525" />
+
+        </div>
+
+        <!-- Availability badge — bottom centre -->
+        <div class="photo-avail-badge">
+          <span class="avail-dot"></span>
           Open to new roles
         </div>
+
+        <!-- Years experience badge — bottom right -->
+        <div class="photo-years-badge">
+          <span class="years-num">8<sup>+</sup></span>
+          <span class="years-label">Years Exp.</span>
+        </div>
+
       </div>
+
     </div>
   </section>
 
 
-  <!-- ════════════════════════════════════
+  <!-- ══════════════════════════════════════════
        ABOUT
-  ════════════════════════════════════ -->
-  <section class="section section-alt" id="about">
+  ══════════════════════════════════════════ -->
+  <section class="section section-alt" id="about" aria-labelledby="about-heading">
     <div class="container">
+
       <p class="section-label reveal">About Me</p>
-      <h2 class="section-heading reveal">The engineer behind<br>the <em>infrastructure</em></h2>
+      <h2 class="section-heading reveal" id="about-heading">
+        The engineer behind<br>the <em>infrastructure</em>
+      </h2>
 
       <div class="about-grid">
+
         <div class="about-text reveal">
           <p>
             I'm an IT Infrastructure Engineer with over <strong>8 years of hands-on experience</strong>
@@ -1203,144 +216,150 @@
           </p>
         </div>
 
-        <div class="about-card-grid reveal">
+        <div class="about-cards reveal">
           <div class="about-card">
-            <div class="about-card-icon">📍</div>
+            <div class="about-card-icon" aria-hidden="true">📍</div>
             <div class="about-card-label">Location</div>
-            <div class="about-card-value">FCT-Abuja<br><span class="accent">Nigeria</span></div>
+            <div class="about-card-value">FCT-Abuja<br><span class="copper">Nigeria</span></div>
           </div>
           <div class="about-card">
-            <div class="about-card-icon">🎓</div>
+            <div class="about-card-icon" aria-hidden="true">🎓</div>
             <div class="about-card-label">Education</div>
-            <div class="about-card-value">B.Eng.<br><span class="accent">Electronic & CE</span></div>
+            <div class="about-card-value">B.Eng.<br><span class="copper">Electronic &amp; CE</span></div>
           </div>
           <div class="about-card">
-            <div class="about-card-icon">🔐</div>
+            <div class="about-card-icon" aria-hidden="true">🔐</div>
             <div class="about-card-label">Specialty</div>
-            <div class="about-card-value">Network &amp;<br><span class="accent">Cybersecurity</span></div>
+            <div class="about-card-value">Network &amp;<br><span class="copper">Cybersecurity</span></div>
           </div>
           <div class="about-card">
-            <div class="about-card-icon">✅</div>
+            <div class="about-card-icon" aria-hidden="true">✅</div>
             <div class="about-card-label">Status</div>
-            <div class="about-card-value">Available<br><span class="accent">for hire now</span></div>
+            <div class="about-card-value">Available<br><span class="copper">for hire now</span></div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
 
-  <!-- ════════════════════════════════════
+  <!-- ══════════════════════════════════════════
        SKILLS
-  ════════════════════════════════════ -->
-  <section class="section" id="skills">
+  ══════════════════════════════════════════ -->
+  <section class="section" id="skills" aria-labelledby="skills-heading">
     <div class="container">
+
       <p class="section-label reveal">Technical Skills</p>
-      <h2 class="section-heading reveal">What I work <em>with</em></h2>
-      <p class="section-subheading reveal">Across systems, networking, security, and operations — a full-stack view of enterprise infrastructure.</p>
+      <h2 class="section-heading reveal" id="skills-heading">What I work <em>with</em></h2>
+      <p class="section-sub reveal">Across systems, networking, security, and operations — a full-stack view of enterprise infrastructure.</p>
 
       <div class="skills-grid">
+
         <div class="skill-card reveal">
-          <div class="skill-card-header">
-            <div class="skill-card-icon-wrap">🖥️</div>
-            <div class="skill-card-title">Systems & Infrastructure</div>
+          <div class="skill-card-head">
+            <div class="skill-icon-wrap" aria-hidden="true">🖥️</div>
+            <h3 class="skill-card-title">Systems &amp; Infrastructure</h3>
           </div>
           <div class="skill-tags">
-            <span class="skill-tag">Windows Server</span>
-            <span class="skill-tag">Linux Ubuntu</span>
-            <span class="skill-tag">Kali Linux</span>
-            <span class="skill-tag">Parrot OS</span>
-            <span class="skill-tag">Hardware Diagnostics</span>
-            <span class="skill-tag">Server Deployment</span>
-            <span class="skill-tag">UPS Systems</span>
-            <span class="skill-tag">Solar Infrastructure</span>
-          </div>
-        </div>
-
-        <div class="skill-card reveal reveal-delay-1">
-          <div class="skill-card-header">
-            <div class="skill-card-icon-wrap">🌐</div>
-            <div class="skill-card-title">Networking</div>
-          </div>
-          <div class="skill-tags">
-            <span class="skill-tag">Cisco IOS</span>
-            <span class="skill-tag">VLAN Configuration</span>
-            <span class="skill-tag">TCP/IP</span>
-            <span class="skill-tag">LAN / WAN</span>
-            <span class="skill-tag">IP Addressing</span>
-            <span class="skill-tag">Cat6 Cabling</span>
-            <span class="skill-tag">MikroTik</span>
-            <span class="skill-tag">Ubiquiti</span>
-            <span class="skill-tag">VoIP / PBX</span>
-          </div>
-        </div>
-
-        <div class="skill-card reveal reveal-delay-2">
-          <div class="skill-card-header">
-            <div class="skill-card-icon-wrap">🔐</div>
-            <div class="skill-card-title">Cybersecurity</div>
-          </div>
-          <div class="skill-tags">
-            <span class="skill-tag">ESET Endpoint</span>
-            <span class="skill-tag">Malwarebytes</span>
-            <span class="skill-tag">Malware Analysis</span>
-            <span class="skill-tag">Penetration Testing</span>
-            <span class="skill-tag">SIEM Concepts</span>
-            <span class="skill-tag">Log Analysis</span>
-            <span class="skill-tag">Incident Response</span>
-            <span class="skill-tag">System Hardening</span>
+            <span class="tag">Windows Server</span>
+            <span class="tag">Linux Ubuntu</span>
+            <span class="tag">Kali Linux</span>
+            <span class="tag">Parrot OS</span>
+            <span class="tag">Hardware Diagnostics</span>
+            <span class="tag">Server Deployment</span>
+            <span class="tag">UPS Systems</span>
+            <span class="tag">Solar Infrastructure</span>
           </div>
         </div>
 
         <div class="skill-card reveal">
-          <div class="skill-card-header">
-            <div class="skill-card-icon-wrap">📷</div>
-            <div class="skill-card-title">Security & Monitoring</div>
+          <div class="skill-card-head">
+            <div class="skill-icon-wrap" aria-hidden="true">🌐</div>
+            <h3 class="skill-card-title">Networking</h3>
           </div>
           <div class="skill-tags">
-            <span class="skill-tag">IP Surveillance</span>
-            <span class="skill-tag">DVR / NVR Config</span>
-            <span class="skill-tag">Network Segmentation</span>
-            <span class="skill-tag">Access Control</span>
+            <span class="tag">Cisco IOS</span>
+            <span class="tag">VLAN Configuration</span>
+            <span class="tag">TCP/IP</span>
+            <span class="tag">LAN / WAN</span>
+            <span class="tag">IP Addressing</span>
+            <span class="tag">Cat6 Cabling</span>
+            <span class="tag">MikroTik</span>
+            <span class="tag">Ubiquiti</span>
+            <span class="tag">VoIP / PBX</span>
           </div>
         </div>
 
-        <div class="skill-card reveal reveal-delay-1">
-          <div class="skill-card-header">
-            <div class="skill-card-icon-wrap">📋</div>
-            <div class="skill-card-title">Operations & Leadership</div>
+        <div class="skill-card reveal">
+          <div class="skill-card-head">
+            <div class="skill-icon-wrap" aria-hidden="true">🔐</div>
+            <h3 class="skill-card-title">Cybersecurity</h3>
           </div>
           <div class="skill-tags">
-            <span class="skill-tag">ICT Operations</span>
-            <span class="skill-tag">Technical Documentation</span>
-            <span class="skill-tag">User Training</span>
-            <span class="skill-tag">SLA Delivery</span>
-            <span class="skill-tag">Team Mentoring</span>
+            <span class="tag">ESET Endpoint</span>
+            <span class="tag">Malwarebytes</span>
+            <span class="tag">Malware Analysis</span>
+            <span class="tag">Penetration Testing</span>
+            <span class="tag">SIEM Concepts</span>
+            <span class="tag">Log Analysis</span>
+            <span class="tag">Incident Response</span>
+            <span class="tag">System Hardening</span>
           </div>
         </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card-head">
+            <div class="skill-icon-wrap" aria-hidden="true">📷</div>
+            <h3 class="skill-card-title">Security &amp; Monitoring</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="tag">IP Surveillance</span>
+            <span class="tag">DVR / NVR Config</span>
+            <span class="tag">Network Segmentation</span>
+            <span class="tag">Access Control</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-card-head">
+            <div class="skill-icon-wrap" aria-hidden="true">📋</div>
+            <h3 class="skill-card-title">Operations &amp; Leadership</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="tag">ICT Operations</span>
+            <span class="tag">Technical Documentation</span>
+            <span class="tag">User Training</span>
+            <span class="tag">SLA Delivery</span>
+            <span class="tag">Team Mentoring</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
 
-  <!-- ════════════════════════════════════
+  <!-- ══════════════════════════════════════════
        EXPERIENCE
-  ════════════════════════════════════ -->
-  <section class="section section-alt" id="experience">
+  ══════════════════════════════════════════ -->
+  <section class="section section-alt" id="experience" aria-labelledby="exp-heading">
     <div class="container">
+
       <p class="section-label reveal">Work History</p>
-      <h2 class="section-heading reveal">Where I've made an <em>impact</em></h2>
-      <p class="section-subheading reveal">8 years across educational institutions and enterprise environments.</p>
+      <h2 class="section-heading reveal" id="exp-heading">Where I've made an <em>impact</em></h2>
+      <p class="section-sub reveal">8 years across educational institutions and enterprise environments.</p>
 
       <div class="exp-grid reveal">
-        <div class="exp-item">
+
+        <article class="exp-item">
           <div class="exp-meta">
-            <div class="exp-period">Feb 2023 — Dec 2025</div>
+            <time class="exp-period">Feb 2023 — Dec 2025</time>
             <div class="exp-company">De Lord's International College</div>
             <div class="exp-location">Awka, Anambra</div>
           </div>
           <div class="exp-body">
-            <div class="exp-role">ICT Manager</div>
+            <h3 class="exp-role">ICT Manager</h3>
             <ul class="exp-bullets">
               <li>Managed end-to-end ICT infrastructure — systems, networks, and all end-user devices — for the entire institution.</li>
               <li>Maintained computer systems, networking equipment, and digital platforms with minimal downtime.</li>
@@ -1348,16 +367,16 @@
               <li>Designed and delivered ICT training programmes for academic staff and non-technical faculty.</li>
             </ul>
           </div>
-        </div>
+        </article>
 
-        <div class="exp-item">
+        <article class="exp-item">
           <div class="exp-meta">
-            <div class="exp-period">Aug 2023 — Feb 2024</div>
+            <time class="exp-period">Aug 2023 — Feb 2024</time>
             <div class="exp-company">MICTU, Nnamdi Azikiwe University</div>
             <div class="exp-location">Awka, Anambra</div>
           </div>
           <div class="exp-body">
-            <div class="exp-role">Systems & Network Support Intern</div>
+            <h3 class="exp-role">Systems &amp; Network Support Intern</h3>
             <ul class="exp-bullets">
               <li>Diagnosed and repaired hardware failures across 200+ laptops and desktop workstations.</li>
               <li>Configured Cisco switches and implemented VLANs across large-scale university computer halls.</li>
@@ -1365,128 +384,134 @@
               <li>Executed malware remediation and endpoint security operations at institutional scale.</li>
             </ul>
           </div>
-        </div>
+        </article>
 
-        <div class="exp-item">
+        <article class="exp-item">
           <div class="exp-meta">
-            <div class="exp-period">Sep 2016 — Mar 2020</div>
+            <time class="exp-period">Sep 2016 — Mar 2020</time>
             <div class="exp-company">Patgabin Printing Press</div>
             <div class="exp-location">Uyo, Akwa Ibom</div>
           </div>
           <div class="exp-body">
-            <div class="exp-role">Systems Analyst</div>
+            <h3 class="exp-role">Systems Analyst</h3>
             <ul class="exp-bullets">
               <li>Provided systems and hardware support for production and office environments, minimising unplanned downtime.</li>
               <li>Supported local network infrastructure and all endpoint systems across production floors and offices.</li>
               <li>Mentored junior technical staff and oversaw daily ICT operations.</li>
             </ul>
           </div>
-        </div>
+        </article>
+
       </div>
     </div>
   </section>
 
 
-  <!-- ════════════════════════════════════
+  <!-- ══════════════════════════════════════════
        PROJECTS
-  ════════════════════════════════════ -->
-  <section class="section" id="projects">
+  ══════════════════════════════════════════ -->
+  <section class="section" id="projects" aria-labelledby="proj-heading">
     <div class="container">
+
       <p class="section-label reveal">Key Projects</p>
-      <h2 class="section-heading reveal">Things I've <em>built</em></h2>
-      <p class="section-subheading reveal">Large-scale deployments, infrastructure builds, and programmes delivered from ground up.</p>
+      <h2 class="section-heading reveal" id="proj-heading">Things I've <em>built</em></h2>
+      <p class="section-sub reveal">Large-scale deployments, infrastructure builds, and programmes delivered from the ground up.</p>
 
       <div class="projects-grid">
-        <div class="project-card reveal">
-          <div class="project-icon">🏗️</div>
-          <div class="project-title">Enterprise Network Deployment — 250+ Nodes</div>
-          <div class="project-desc">Designed and deployed full structured cabling infrastructure for a 250+ workstation environment. Configured switching, VLAN segmentation, and secure access controls to support high-availability institutional operations.</div>
-          <div class="project-tags">
-            <span class="project-tag">Cisco IOS</span>
-            <span class="project-tag">VLANs</span>
-            <span class="project-tag">Cat6 Cabling</span>
-            <span class="project-tag">Network Security</span>
-          </div>
-        </div>
 
-        <div class="project-card reveal reveal-delay-1">
-          <div class="project-icon">💻</div>
-          <div class="project-title">Digital Library & CBT Centre Infrastructure</div>
-          <div class="project-desc">Installed and configured 250 workstations with complete supporting infrastructure for a university Computer-Based Testing centre. Achieved stable performance, maximum uptime, and secured access throughout the facility.</div>
+        <article class="project-card reveal">
+          <div class="project-icon" aria-hidden="true">🏗️</div>
+          <h3 class="project-title">Enterprise Network Deployment — 250+ Nodes</h3>
+          <p class="project-desc">Designed and deployed full structured cabling infrastructure for a 250+ workstation environment. Configured switching, VLAN segmentation, and secure access controls to support high-availability institutional operations.</p>
           <div class="project-tags">
-            <span class="project-tag">Workstation Deployment</span>
-            <span class="project-tag">Server Setup</span>
-            <span class="project-tag">Access Control</span>
+            <span class="tag tag-mono">Cisco IOS</span>
+            <span class="tag tag-mono">VLANs</span>
+            <span class="tag tag-mono">Cat6 Cabling</span>
+            <span class="tag tag-mono">Network Security</span>
           </div>
-        </div>
+        </article>
 
-        <div class="project-card reveal">
-          <div class="project-icon">🛡️</div>
-          <div class="project-title">Institutional Cybersecurity Training Programme</div>
-          <div class="project-desc">Designed and delivered a multi-session security training curriculum covering firewalls, intrusion detection, encryption, and endpoint security — building institutional cybersecurity awareness from scratch across staff and faculty.</div>
+        <article class="project-card reveal">
+          <div class="project-icon" aria-hidden="true">💻</div>
+          <h3 class="project-title">Digital Library &amp; CBT Centre Infrastructure</h3>
+          <p class="project-desc">Installed and configured 250 workstations with complete supporting infrastructure for a university Computer-Based Testing centre. Achieved stable performance, maximum uptime, and secured access throughout the facility.</p>
           <div class="project-tags">
-            <span class="project-tag">Security Awareness</span>
-            <span class="project-tag">Endpoint Security</span>
-            <span class="project-tag">Curriculum Design</span>
+            <span class="tag tag-mono">Workstation Deployment</span>
+            <span class="tag tag-mono">Server Setup</span>
+            <span class="tag tag-mono">Access Control</span>
           </div>
-        </div>
+        </article>
 
-        <div class="project-card reveal reveal-delay-1">
-          <div class="project-icon">⚡</div>
-          <div class="project-title">Solar-Backed Power Resilience Infrastructure</div>
-          <div class="project-desc">Engineered and integrated solar-backed UPS power systems for critical ICT infrastructure, dramatically improving uptime and operational reliability in a region with frequent power instability.</div>
+        <article class="project-card reveal">
+          <div class="project-icon" aria-hidden="true">🛡️</div>
+          <h3 class="project-title">Institutional Cybersecurity Training Programme</h3>
+          <p class="project-desc">Designed and delivered a multi-session security training curriculum covering firewalls, intrusion detection, encryption, and endpoint security — building institutional cybersecurity awareness from scratch across staff and faculty.</p>
           <div class="project-tags">
-            <span class="project-tag">Solar Power</span>
-            <span class="project-tag">UPS Integration</span>
-            <span class="project-tag">Critical Infrastructure</span>
+            <span class="tag tag-mono">Security Awareness</span>
+            <span class="tag tag-mono">Endpoint Security</span>
+            <span class="tag tag-mono">Curriculum Design</span>
           </div>
-        </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-icon" aria-hidden="true">⚡</div>
+          <h3 class="project-title">Solar-Backed Power Resilience Infrastructure</h3>
+          <p class="project-desc">Engineered and integrated solar-backed UPS power systems for critical ICT infrastructure, dramatically improving uptime and operational reliability in a region with frequent power instability.</p>
+          <div class="project-tags">
+            <span class="tag tag-mono">Solar Power</span>
+            <span class="tag tag-mono">UPS Integration</span>
+            <span class="tag tag-mono">Critical Infrastructure</span>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
 
 
-  <!-- ════════════════════════════════════
+  <!-- ══════════════════════════════════════════
        CERTIFICATIONS + EDUCATION
-  ════════════════════════════════════ -->
-  <section class="section section-alt" id="certifications">
+  ══════════════════════════════════════════ -->
+  <section class="section section-alt" id="certifications" aria-labelledby="certs-heading">
     <div class="container">
+
       <p class="section-label reveal">Credentials</p>
-      <h2 class="section-heading reveal">Certifications &amp; <em>Education</em></h2>
-      <p class="section-subheading reveal">Verified credentials across Cisco networking, cybersecurity, and enterprise IT.</p>
+      <h2 class="section-heading reveal" id="certs-heading">Certifications &amp; <em>Education</em></h2>
+      <p class="section-sub reveal">Verified credentials across Cisco networking, cybersecurity, and enterprise IT.</p>
 
       <div class="certs-layout">
+
         <div class="certs-list">
           <div class="cert-card reveal">
-            <div class="cert-badge cisco">🔵</div>
+            <div class="cert-badge cisco" aria-label="Cisco">🔵</div>
             <div class="cert-info">
               <strong>Cisco Networking Basics</strong>
               <span>Cisco Networking Academy</span>
             </div>
           </div>
           <div class="cert-card reveal">
-            <div class="cert-badge cisco">🔵</div>
+            <div class="cert-badge cisco" aria-label="Cisco">🔵</div>
             <div class="cert-info">
               <strong>Networking Devices &amp; Initial Configuration</strong>
               <span>Cisco Networking Academy</span>
             </div>
           </div>
           <div class="cert-card reveal">
-            <div class="cert-badge cisco">🔵</div>
+            <div class="cert-badge cisco" aria-label="Cisco">🔵</div>
             <div class="cert-info">
               <strong>Cisco Endpoint Security</strong>
               <span>Cisco Networking Academy</span>
             </div>
           </div>
           <div class="cert-card reveal">
-            <div class="cert-badge cisco">🔵</div>
+            <div class="cert-badge cisco" aria-label="Cisco">🔵</div>
             <div class="cert-info">
               <strong>Cisco Cybersecurity Specialist</strong>
               <span>Cisco Networking Academy</span>
             </div>
           </div>
           <div class="cert-card reveal">
-            <div class="cert-badge ibm">🟦</div>
+            <div class="cert-badge ibm" aria-label="IBM">🟦</div>
             <div class="cert-info">
               <strong>IBM Cybersecurity Specialist Professional</strong>
               <span>IBM · Coursera</span>
@@ -1496,22 +521,22 @@
 
         <div class="edu-aside">
           <div class="edu-card reveal">
-            <div class="edu-card-label">Education</div>
-            <div class="edu-degree">B.Eng. Electronic &amp; Computer Engineering</div>
-            <div class="edu-school">Nnamdi Azikiwe University, Awka</div>
+            <p class="edu-card-label">Education</p>
+            <h3 class="edu-degree">B.Eng. Electronic &amp; Computer Engineering</h3>
+            <p class="edu-school">Nnamdi Azikiwe University, Awka</p>
           </div>
 
           <div class="edu-card reveal">
-            <div class="edu-card-label">Professional Affiliations</div>
+            <p class="edu-card-label">Professional Affiliations</p>
             <div class="affil-item">
-              <div class="affil-icon">⚡</div>
+              <span class="affil-icon" aria-hidden="true">⚡</span>
               <div class="affil-text">
                 <strong>IEEE Communications Society (ComSoc)</strong>
                 <span>Chairman — UNIZIK Chapter, 2023–2025</span>
               </div>
             </div>
             <div class="affil-item">
-              <div class="affil-icon">🔒</div>
+              <span class="affil-icon" aria-hidden="true">🔒</span>
               <div class="affil-text">
                 <strong>(ISC)² — Candidate Member</strong>
                 <span>International Information System Security Certification Consortium</span>
@@ -1519,79 +544,80 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
 
-  <!-- ════════════════════════════════════
+  <!-- ══════════════════════════════════════════
        CONTACT
-  ════════════════════════════════════ -->
-  <section class="section" id="contact">
+  ══════════════════════════════════════════ -->
+  <section class="section contact-section" id="contact" aria-labelledby="contact-heading">
     <div class="container">
+
       <p class="section-label reveal">Get In Touch</p>
-      <h2 class="section-heading reveal">Ready to build something <em>great?</em></h2>
+      <h2 class="section-heading reveal" id="contact-heading">Ready to build something <em>great?</em></h2>
 
       <div class="contact-grid">
+
         <div class="contact-info reveal">
           <p>
             I'm open to full-time infrastructure engineering roles, senior IT positions,
             consulting engagements, and security projects. If you need someone who can design,
             deploy, and defend complex IT environments — let's talk.
           </p>
-
           <div class="contact-details">
             <a href="mailto:ogendubuisi1@gmail.com" class="contact-row">
-              <div class="contact-row-icon">✉</div>
+              <span class="contact-row-icon" aria-hidden="true">✉</span>
               ogendubuisi1@gmail.com
             </a>
             <a href="tel:09064556291" class="contact-row">
-              <div class="contact-row-icon">☎</div>
+              <span class="contact-row-icon" aria-hidden="true">☎</span>
               09064556291
             </a>
             <div class="contact-row">
-              <div class="contact-row-icon">📍</div>
+              <span class="contact-row-icon" aria-hidden="true">📍</span>
               FCT-Abuja, Nigeria
             </div>
             <!--
-              Add your LinkedIn:
-              <a href="https://linkedin.com/in/YOUR-PROFILE" target="_blank" class="contact-row">
-                <div class="contact-row-icon">in</div>
+              Add LinkedIn — uncomment and fill in your URL:
+              <a href="https://linkedin.com/in/YOUR-PROFILE" target="_blank" rel="noopener" class="contact-row">
+                <span class="contact-row-icon">in</span>
                 linkedin.com/in/your-profile
               </a>
             -->
           </div>
         </div>
 
-        <div class="reveal reveal-delay-1">
+        <div class="reveal">
           <!--
-            ── FORMSPREE SETUP ───────────────────────────────
-            1. Go to https://formspree.io and create a free account
-            2. Create a new form → copy your endpoint URL
-            3. Replace action="YOUR_FORMSPREE_URL" below with your real URL
-               e.g. action="https://formspree.io/f/abcdefgh"
-            4. That's it — submissions go straight to your email
-            ─────────────────────────────────────────────────
+            ═══ FORMSPREE SETUP (5 minutes, free) ══════════
+            1. Go to formspree.io → sign up free
+            2. Click "+ New Form" → copy the endpoint URL
+            3. Replace YOUR_FORMSPREE_URL below with it
+               e.g.  action="https://formspree.io/f/abcdefgh"
+            ═══════════════════════════════════════════════
           -->
-          <form class="contact-form" id="contactForm"
-                action="https://formspree.io/f/xreyqnab"
-                method="POST"
-                onsubmit="handleFormSubmit(event)">
+          <form id="contactForm"
+                class="contact-form"
+                action="YOUR_FORMSPREE_URL"
+                method="POST">
 
             <div class="form-row">
               <div class="form-group">
                 <label for="fname">First Name</label>
-                <input type="text" id="fname" name="first_name" placeholder="John" required />
+                <input type="text" id="fname" name="first_name" placeholder="John" required autocomplete="given-name" />
               </div>
               <div class="form-group">
                 <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="last_name" placeholder="Doe" required />
+                <input type="text" id="lname" name="last_name" placeholder="Doe" required autocomplete="family-name" />
               </div>
             </div>
 
             <div class="form-group">
               <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="john@company.com" required />
+              <input type="email" id="email" name="email" placeholder="john@company.com" required autocomplete="email" />
             </div>
 
             <div class="form-group">
@@ -1611,123 +637,38 @@
               <textarea id="message" name="message" placeholder="Tell me about the role, project, or what you're looking for…" required></textarea>
             </div>
 
-            <div id="formSuccess" class="form-success">
-              ✓ Message received! I'll get back to you within 24 hours.
-            </div>
+            <div id="formSuccess" class="form-success" role="alert" aria-live="polite"></div>
 
             <button type="submit" class="form-btn" id="submitBtn">
-              Send Message <span>→</span>
+              Send Message <span aria-hidden="true">→</span>
             </button>
             <p class="form-note">Your message goes directly to my inbox. No spam, no middlemen.</p>
+
           </form>
         </div>
+
       </div>
     </div>
   </section>
 
 
-  <!-- ════════════════════════════════════
+  <!-- ══════════════════════════════════════════
        FOOTER
-  ════════════════════════════════════ -->
-  <footer>
-    <span class="footer-copy">
-      © 2025 <a href="#hero">Ogechi Daniel Ndubuisi</a> · ogechindubuisi.com
-    </span>
-    <div class="footer-status">
-      <div class="status-dot"></div>
-      Available for opportunities
+  ══════════════════════════════════════════ -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <span class="footer-copy">
+        © 2025 <a href="#hero">Ogechi Daniel Ndubuisi</a> · ogechindubuisi.com
+      </span>
+      <div class="footer-status">
+        <span class="status-dot" aria-hidden="true"></span>
+        Available for opportunities
+      </div>
+      <span class="footer-copy">FCT-Abuja, Nigeria</span>
     </div>
-    <span class="footer-copy">FCT-Abuja, Nigeria</span>
   </footer>
 
 
-  <!-- ════════════════════════════════════
-       JAVASCRIPT
-  ════════════════════════════════════ -->
-  <script>
-    // ── Mobile nav ──
-    const toggle   = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
-    navLinks.querySelectorAll('a').forEach(a =>
-      a.addEventListener('click', () => navLinks.classList.remove('open'))
-    );
-
-    // ── Nav shadow on scroll ──
-    const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    });
-
-    // ── Active nav link ──
-    const sections = document.querySelectorAll('section[id]');
-    const navAs    = document.querySelectorAll('.nav-links a[href^="#"]');
-    const onScroll = () => {
-      let current = '';
-      sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 100) current = s.id;
-      });
-      navAs.forEach(a => {
-        a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
-      });
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-    // ── Scroll reveal ──
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    // ── Contact form handler ──
-    async function handleFormSubmit(e) {
-      const form  = document.getElementById('contactForm');
-      const action = form.getAttribute('action');
-
-      // If Formspree not configured yet, fall back to mailto
-      if (!action || action === 'YOUR_FORMSPREE_URL') {
-        e.preventDefault();
-        const name    = document.getElementById('fname').value + ' ' + document.getElementById('lname').value;
-        const email   = document.getElementById('email').value;
-        const subject = document.getElementById('subject').value || 'Portfolio Enquiry';
-        const message = document.getElementById('message').value;
-        const sub     = encodeURIComponent(`Portfolio Enquiry from ${name} — ${subject}`);
-        const body    = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\n${message}`);
-        window.location.href = `mailto:ogendubuisi1@gmail.com?subject=${sub}&body=${body}`;
-        document.getElementById('formSuccess').style.display = 'block';
-        document.getElementById('submitBtn').textContent = '✓ Sent';
-        return;
-      }
-
-      // Formspree AJAX submission
-      e.preventDefault();
-      const btn  = document.getElementById('submitBtn');
-      btn.textContent = 'Sending…';
-      btn.disabled = true;
-      try {
-        const data = new FormData(form);
-        const res  = await fetch(action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
-        if (res.ok) {
-          document.getElementById('formSuccess').style.display = 'block';
-          btn.textContent = '✓ Sent!';
-          form.reset();
-        } else {
-          throw new Error('Server error');
-        }
-      } catch {
-        btn.textContent = 'Send Message →';
-        btn.disabled = false;
-        alert('There was a problem sending your message. Please email me directly at ogendubuisi1@gmail.com');
-      }
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

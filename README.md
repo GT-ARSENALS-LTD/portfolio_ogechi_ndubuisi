@@ -1,95 +1,81 @@
-# ogechindubuisi.com — Portfolio v2
+# ogechindubuisi.com — Portfolio v3
 
-Professional portfolio for Ogechi Daniel Ndubuisi, IT Infrastructure Engineer.
+Portfolio website for Ogechi Daniel Ndubuisi, IT Infrastructure Engineer.
+Split into clean, separate files: HTML · CSS · JavaScript.
 
 ---
 
-## 📁 Files in This Package
+## 📁 File Structure
 
 ```
-portfolio_v2/
-├── index.html                  ← Complete website (single file)
-├── README.md                   ← This file
-└── [Add these files yourself]
-    ├── NDUBUISI_OGECHI_CV.pdf  ← Your CV for the download button
-    └── ogechi-ndubuisi.jpg     ← Your professional headshot
+portfolio_v3/
+├── index.html               ← Page structure only (no inline CSS or JS)
+├── style.css                ← All styles + responsive system
+├── script.js                ← All interactivity
+├── README.md                ← This file
+│
+│  ── Add these yourself ──
+├── ogechi-ndubuisi.jpg      ← Your professional headshot
+└── NDUBUISI_OGECHI_CV.pdf   ← Your CV for download
 ```
 
 ---
 
 ## ✅ 3 Things To Do Before Going Live
 
-### 1. Add Your Photo
-- Get a professional headshot (well-lit, neutral background, business attire)
-- Name the file: `ogechi-ndubuisi.jpg`
-- Place it alongside `index.html`
-- Open `index.html` in a text editor, find the comment `── HOW TO ADD YOUR PHOTO ──`
-- Replace the `<div class="photo-placeholder">...</div>` block with:
+### 1 — Add Your Photo
+- Name your file: `ogechi-ndubuisi.jpg`
+- Place it in the same folder as `index.html`
+- Open `index.html`, find the comment `═══ HOW TO ADD YOUR PHOTO`
+- Delete the `<div class="photo-placeholder">...</div>` block
+- Replace it with one line:
   ```html
-  <img src="ogechi-ndubuisi.jpg" alt="Ogechi Daniel Ndubuisi" />
+  <img src="ogechi-ndubuisi.jpg" alt="Ogechi Daniel Ndubuisi" width="420" height="525" />
   ```
 
-### 2. Add Your CV PDF
+### 2 — Add Your CV PDF
 - Export your CV as PDF
 - Name it: `NDUBUISI_OGECHI_CV.pdf`
-- Place in same folder as `index.html`
+- Place in the same folder as `index.html`
 
-### 3. Set Up a Real Contact Form (10 minutes, free)
-1. Go to **https://formspree.io** → Sign up free
-2. Click **+ New Form** → Name it "Portfolio Contact"
-3. Copy the endpoint URL (looks like `https://formspree.io/f/xxxxxxxx`)
+### 3 — Connect Formspree (real contact form, 5 min, free)
+1. Go to **formspree.io** → Sign up with Gmail
+2. Click **+ New Form** → name it "Portfolio Contact"
+3. Copy the endpoint (looks like `https://formspree.io/f/xxxxxxxx`)
 4. Open `index.html`, find `action="YOUR_FORMSPREE_URL"`
-5. Replace with your real URL
-6. Done — submissions go directly to your Gmail
+5. Replace it with your real URL
 
-**Without step 3:** The form still works — it opens the visitor's email app as a fallback.
+Without step 3, the form falls back to opening your email app — still works.
 
 ---
 
-## 🚀 Deployment Options
+## 🚀 Deploy to Your Domain
 
 ### Option A — Netlify (Recommended, FREE)
-1. Sign up at https://netlify.com
-2. Drag and drop the `portfolio_v2/` folder onto the Netlify dashboard
-3. Live in 30 seconds at a random URL
-4. Go to **Domain Management → Add Custom Domain**
-5. Enter: `ogechindubuisi.com`
-6. Point your domain registrar's nameservers to Netlify (they provide the values)
+1. Go to netlify.com → sign up
+2. Drag the `portfolio_v3/` folder onto the dashboard
+3. Live instantly → go to Domain Management → Add `ogechindubuisi.com`
+4. Point your domain registrar's nameservers to Netlify
 
 ### Option B — Vercel (Also FREE)
-1. Sign up at https://vercel.com
-2. New Project → Deploy → Upload folder
-3. Settings → Domains → add `ogechindubuisi.com`
+1. vercel.com → New Project → Upload folder
+2. Settings → Domains → add `ogechindubuisi.com`
 
-### Option C — cPanel / Shared Hosting
-1. Log into cPanel → File Manager → `public_html/`
-2. Upload `index.html`, your PDF, and your photo
-3. Your domain serves the site automatically
-
----
-
-## 🎨 Quick Customization
-
-All colors are CSS variables at the top of `index.html`:
-
-| Variable       | Value     | Used For              |
-|----------------|-----------|----------------------|
-| `--cream`      | `#F7F3EE` | Page background       |
-| `--ink`        | `#1C1917` | Primary text          |
-| `--copper`     | `#C2692A` | Accent / highlights   |
-| `--copper-bg`  | `#FDF0E8` | Accent backgrounds    |
-
-Change `--copper` to any color to re-theme the entire site instantly.
+### Option C — cPanel Hosting
+1. cPanel → File Manager → `public_html/`
+2. Upload all 4 files + your photo + your PDF
+3. Done
 
 ---
 
-## 📞 Optional Next Steps
+## 🎨 Customising Colours
 
-- **LinkedIn link**: Find the commented-out LinkedIn row in the contact section and add your profile URL
-- **GitHub link**: If you have projects on GitHub, add it similarly
-- **Google Analytics**: Add your GA4 tracking code before `</head>`
-- **Favicon**: Add a `favicon.ico` or `favicon.png` in the folder and link it in `<head>`
+All design tokens live at the top of `style.css` in the `:root {}` block.
+Change `--copper: #C2692A` to any hex colour to re-theme the entire site instantly.
 
 ---
 
-Built for ogechindubuisi.com · IT Infrastructure Engineer
+## 🔗 Adding LinkedIn
+
+Open `index.html` and find the commented-out LinkedIn block in the contact section.
+Uncomment it and replace `YOUR-PROFILE` with your LinkedIn username.
