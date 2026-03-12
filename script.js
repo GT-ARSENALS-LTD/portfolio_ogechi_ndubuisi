@@ -150,7 +150,7 @@ async function handleFormSubmit(e) {
   const action = contactForm.getAttribute('action');
 
   /* ── Fallback: Formspree not yet configured ── */
-  if (!action || action === 'YOUR_FORMSPREE_URL') {
+  if (!action || action === 'https://formspree.io/f/xreyqnab') {
     const name    = `${document.getElementById('fname').value} ${document.getElementById('lname').value}`.trim();
     const email   = document.getElementById('email').value;
     const subject = document.getElementById('subject').value || 'Portfolio Enquiry';
