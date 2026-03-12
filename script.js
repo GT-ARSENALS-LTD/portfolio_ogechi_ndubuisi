@@ -137,35 +137,32 @@ const revealObserver = new IntersectionObserver(
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 
-/* ─────────────────────────────────────────
-   5. CONTACT FORM HANDLER
+
+ /* ─────────────────────────────────────────
+5. CONTACT FORM HANDLER (Formspree Ready)
 ───────────────────────────────────────── */
-if (contactForm) {
-  contactForm.addEventListener('submit', handleFormSubmit);
+  if (contactForm) {
+    contactForm.addEventListener('submit', handleFormSubmit);
 }
 
 async function handleFormSubmit(e) {
-  e.preventDefault();
+    e.preventDefault();
+    const action = contactForm.getAttribute('action');
 
-  const action = contactForm.getAttribute('action');
-
-  /* ── Fallback: Formspree not yet configured ── */
-  if (!action || action === 'https://formspree.io/f/xreyqnab') {
-    const name    = `${document.getElementById('fname').value} ${document.getElementById('lname').value}`.trim();
-    const email   = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value || 'Portfolio Enquiry';
-    const message = document.getElementById('message').value;
-
-    const mailSubject = encodeURIComponent(`Portfolio Enquiry from ${name} — ${subject}`);
-    const mailBody    = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nTopic: ${subject}\n\n${message}`
-    );
-
-    window.location.href = `mailto:ogendubuisi1@gmail.com?subject=${mailSubject}&body=${mailBody}`;
-
-    showSuccess('Message opened in your mail app!');
-    return;
-  }
+    // ── ONLY use mailto if the action attribute is missing entirely ──
+    if (!action || action === '#' || action === '') {
+        const name = `${document.getElementById('fname').value} ${document.getElementById('lname').value}`.trim();
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value || 'Portfolio Enquiry';
+        const message = document.getElementById('message').value;
+        
+        const mailSubject = encodeURIComponent(`Portfolio Enquiry from ${name} — ${subject}`);
+        const mailBody = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nTopic: ${subject}\n\n${message}`);
+        
+        window.location.href = `mailto:ogendubuisi1@gmail.com?subject=${mailSubject}&body=${mailBody}`;
+        showSuccess('Message opened in your mail app!');
+        return;
+    }
 
   /* ── Live: send to Formspree via fetch ── */
   submitBtn.textContent = 'Sending…';
