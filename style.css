@@ -1384,3 +1384,306 @@ footer {
 [data-theme="light"] #terminalPanel {
   background: #1e1e2e;
 }
+
+/* new styles */
+
+
+/* ── SCROLL PROGRESS BAR ──────────────────────────── */
+#scrollProgress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--copper), var(--copper-light));
+  z-index: 999;
+  transition: width 0.1s linear;
+  border-radius: 0 2px 2px 0;
+  pointer-events: none;
+}
+
+
+/* ── CUSTOM CURSOR (desktop only) ─────────────────── */
+#customCursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 32px; height: 32px;
+  border: 1.5px solid var(--copper);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.6;
+  transition: width .18s ease, height .18s ease, opacity .18s ease;
+}
+#customCursor.grow {
+  width: 50px; height: 50px;
+  opacity: 0.3;
+}
+#cursorDot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 6px; height: 6px;
+  background: var(--copper);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+}
+@media (pointer: coarse) {
+  #customCursor, #cursorDot { display: none; }
+}
+/* Hide native cursor on desktop when custom one is active */
+@media (pointer: fine) {
+  body, body * { cursor: none !important; }
+}
+
+
+/* ── NAV UTILITY BUTTONS (terminal + theme) ────────── */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+}
+.nav-icon-btn {
+  width: 36px; height: 36px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--ink-light);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color .2s, color .2s, background .2s;
+  flex-shrink: 0;
+}
+.nav-icon-btn:hover {
+  border-color: var(--copper);
+  color: var(--copper);
+  background: var(--copper-bg);
+}
+/* Hide nav-actions on mobile — hamburger takes over */
+@media (max-width: 900px) {
+  .nav-actions { display: none; }
+}
+
+
+/* ── NETWORK CANVAS IN HERO ────────────────────────── */
+#hero { position: relative; overflow: hidden; }
+
+#networkCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  opacity: 0.55;
+  z-index: 0;
+}
+/* Everything inside hero sits on top of canvas */
+.hero-inner { position: relative; z-index: 1; }
+
+
+/* ── TYPING ANIMATION ─────────────────────────────── */
+/* Wraps the animated role text — sits between .hero-name and .hero-bio */
+.hero-role-line {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-light);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-role-line::before {
+  content: '>';
+  color: var(--copper);
+  font-weight: 700;
+}
+#typingText {
+  color: var(--copper-dark);
+  font-weight: 600;
+}
+.cursor-blink {
+  display: inline-block;
+  width: 2px; height: 1em;
+  background: var(--copper);
+  margin-left: 1px;
+  vertical-align: middle;
+  animation: cur-blink 1s step-end infinite;
+}
+@keyframes cur-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+
+/* ── HERO STAGGER ENTRANCE ANIMATION ─────────────── */
+.hero-stagger {
+  opacity: 0;
+  transform: translateY(22px);
+}
+.hero-animate-in {
+  animation: heroUp 0.65s cubic-bezier(0.34,1.2,0.64,1) forwards;
+}
+@keyframes heroUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ── SKILL BARS ───────────────────────────────────── */
+/* Add these inside each .skill-card, above .skill-tags */
+.skill-bars { margin-bottom: 16px; }
+
+.skill-bar-row { margin-bottom: 10px; }
+
+.skill-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-light);
+  margin-bottom: 5px;
+}
+
+.skill-bar-track {
+  background: var(--border-light);
+  border-radius: 100px;
+  height: 5px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  width: 0%;                          /* starts at 0, JS animates to data-level */
+  border-radius: 100px;
+  background: linear-gradient(90deg, var(--copper-dark), var(--copper-light));
+  transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+}
+
+
+/* ── TERMINAL EASTER EGG PANEL ────────────────────── */
+#terminalPanel {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(calc(100% + 36px));
+  width: min(660px, 94vw);
+  background: #1C1917;          /* your --ink dark tone */
+  border: 1px solid rgba(194,105,42,0.35);
+  border-radius: 14px;
+  box-shadow: 0 24px 72px rgba(28,25,23,0.5);
+  z-index: 800;
+  overflow: hidden;
+  opacity: 0;
+  transition: transform 0.38s cubic-bezier(0.34,1.2,0.64,1), opacity 0.38s ease;
+}
+#terminalPanel.open {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.term-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 16px;
+  background: #141210;
+  border-bottom: 1px solid rgba(194,105,42,0.15);
+}
+.term-dots       { display: flex; gap: 6px; }
+.term-dot        { width: 12px; height: 12px; border-radius: 50%; }
+.term-dot:nth-child(1) { background: #FF5F57; }
+.term-dot:nth-child(2) { background: #FEBC2E; }
+.term-dot:nth-child(3) { background: #28C840; }
+
+.term-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #78716C;
+}
+#termClose {
+  background: none; border: none;
+  color: #78716C; font-size: 1rem;
+  cursor: pointer; padding: 2px 6px;
+  border-radius: 4px;
+  transition: color .2s;
+}
+#termClose:hover { color: #F7F3EE; }
+
+#termOutput {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.75;
+  color: #D6CFC8;
+  padding: 14px 16px;
+  height: 230px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+/* Terminal output colour classes */
+#termOutput .tc-prompt    { color: var(--copper); font-weight: 600; }
+#termOutput .tc-cmd       { color: var(--copper-light); font-weight: 600; }
+#termOutput .tc-dim       { color: #78716C; }
+#termOutput .tc-highlight { color: #E8845A; }
+#termOutput .tc-error     { color: #EF4444; }
+#termOutput .tc-output    { color: #A3B899; margin-bottom: 4px; padding-left: 2px; }
+
+/* Scrollbar inside terminal */
+#termOutput::-webkit-scrollbar       { width: 4px; }
+#termOutput::-webkit-scrollbar-track { background: transparent; }
+#termOutput::-webkit-scrollbar-thumb { background: rgba(194,105,42,0.3); border-radius: 2px; }
+
+.term-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-top: 1px solid rgba(194,105,42,0.15);
+  background: #141210;
+}
+.term-input-row > span {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--copper);
+  flex-shrink: 0;
+}
+#termInput {
+  flex: 1;
+  background: none; border: none; outline: none;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: #D6CFC8;
+  caret-color: var(--copper);
+}
+
+
+/* ── TERMINAL HINT BUTTON (in hero) ──────────────── */
+.terminal-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 24px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 8px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.terminal-hint:hover {
+  border-color: var(--copper);
+  color: var(--copper-dark);
+  background: var(--copper-bg);
+}
+.terminal-hint kbd {
+  background: var(--copper-bg);
+  border: 1px solid rgba(194,105,42,0.3);
+  color: var(--copper);
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+}

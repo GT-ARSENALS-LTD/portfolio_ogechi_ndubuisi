@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,15 +14,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,600;1,9..144,700&family=Figtree:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Scroll progress bar -->
+  <div id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Custom cursor (desktop only, hidden on touch) -->
+  <div id="customCursor" aria-hidden="true"></div>
+  <div id="cursorDot"    aria-hidden="true"></div>
 </head>
 <body>
 
   <!-- ── SCROLL PROGRESS BAR ──────────────────────── -->
-  <div id="scrollProgress" aria-hidden="true"></div>
+  <!-- <div id="scrollProgress" aria-hidden="true"></div> -->
 
   <!-- ── CUSTOM CURSOR (desktop only) ─────────────── -->
-  <div id="customCursor" aria-hidden="true"></div>
-  <div id="cursorDot"    aria-hidden="true"></div>
+  <!-- <div id="customCursor" aria-hidden="true"></div>
+  <div id="cursorDot"    aria-hidden="true"></div> -->
 
 
   <!-- ══════════════════════════════════════════════
@@ -43,18 +50,19 @@
         <li><a href="#contact" class="nav-cta-btn">Hire Me</a></li>
       </ul>
 
-      <!-- Nav utility buttons -->
+      
+      <!-- Adds: >_ terminal button and theme icon in nav
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ --> 
       <div class="nav-actions">
-        <!-- Terminal trigger -->
-        <button class="nav-icon-btn" id="openTerminal" title="Open terminal (or press ` )" aria-label="Open interactive terminal">
-          <span aria-hidden="true">&gt;_</span>
-        </button>
+        <button class="nav-icon-btn open-terminal-btn" title="Open terminal (press ` )" aria-label="Open interactive terminal">&gt;_</button>
+
+        <!-- Nav utility buttons -->
+      <div class="nav-actions">
         <!-- Dark / light mode toggle -->
-        <button class="nav-icon-btn" id="themeToggle" aria-label="Switch to light mode">
-          <span class="theme-icon-dark"  aria-hidden="true">🌙</span>
-          <span class="theme-icon-light" aria-hidden="true">☀️</span>
-        </button>
+        <button class="nav-icon-btn" id="themeToggle" aria-label="Switch to dark mode">🌙</button>
       </div>
+      </div>
+      
 
       <!-- Hamburger -->
       <button class="nav-toggle" id="navToggle"
@@ -89,7 +97,7 @@
   <section id="hero" aria-label="Introduction">
 
     <!-- Animated network background — the visual heart of the IT engineer brand -->
-    <canvas id="networkCanvas" aria-hidden="true"></canvas>
+      <canvas id="networkCanvas" aria-hidden="true"></canvas>
 
     <div class="hero-inner">
 
@@ -107,7 +115,7 @@
         </h1>
 
         <!-- Typing animated role line -->
-        <p class="hero-role-line hero-stagger" aria-label="IT Infrastructure Engineer specialising in Systems Engineering, Network Architecture, Cybersecurity, Infrastructure Design and IT Leadership">
+        <p class="hero-role-line" aria-label="IT Infrastructure Engineer specialising in Systems Engineering, Network Architecture, Cybersecurity, Infrastructure Design and IT Leadership">
           <span id="typingText" aria-hidden="true">Systems Engineering</span><span class="cursor-blink" aria-hidden="true"></span>
         </p>
 
@@ -131,6 +139,7 @@
             <div class="stat-num"><span data-target="3" aria-label="3">0</span></div>
             <div class="stat-label">Institutions Served</div>
           </div>
+          
         </div>
 
         <div class="hero-ctas hero-stagger">
@@ -139,9 +148,10 @@
           <a href="NDUBUISI_OGECHI_CV.pdf" download class="btn btn-outline">↓ &nbsp;Download CV</a>
         </div>
 
+
         <!-- Terminal hint -->
-        <button class="terminal-hint hero-stagger" id="openTerminal2" aria-label="Open interactive terminal">
-          <kbd>`</kbd> Press backtick to open the terminal — type <code>help</code>
+        <button class="terminal-hint open-terminal-btn hero-stagger" aria-label="Open interactive terminal">
+          <kbd>`</kbd> Press backtick to open terminal — type <code>help</code>
         </button>
 
       </div>
@@ -268,6 +278,22 @@
             <div class="skill-icon-wrap" aria-hidden="true">🖥️</div>
             <h3 class="skill-card-title">Systems &amp; Infrastructure</h3>
           </div>
+
+          <div class="skill-bars">
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>Windows Server</span><span>95%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="95"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>Linux (Ubuntu / Kali)</span><span>88%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="88"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>Server Deployment & UPS</span><span>92%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="92"></div></div>
+            </div>
+          </div>
+
           <div class="skill-bars">
             <div class="skill-bar-row">
               <div class="skill-bar-label"><span>Windows Server</span><span>95%</span></div>
@@ -291,6 +317,9 @@
             <span class="tag">Solar Infrastructure</span>
           </div>
         </div>
+        
+        
+
 
         <!-- Networking -->
         <div class="skill-card reveal">
@@ -312,6 +341,22 @@
               <div class="skill-bar-track"><div class="skill-bar-fill" data-level="82"></div></div>
             </div>
           </div>
+
+          <div class="skill-bars">
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>Cisco IOS / VLAN</span><span>90%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="90"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>TCP/IP & LAN/WAN</span><span>93%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="93"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>MikroTik / Ubiquiti</span><span>82%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="82"></div></div>
+            </div>
+          </div>
+
           <div class="skill-tags">
             <span class="tag">Cisco IOS</span>
             <span class="tag">VLAN Configuration</span>
@@ -335,6 +380,22 @@
               <div class="skill-bar-label"><span>Penetration Testing</span><span>80%</span></div>
               <div class="skill-bar-track"><div class="skill-bar-fill" data-level="80"></div></div>
             </div>
+
+            <div class="skill-bars">
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>Penetration Testing</span><span>80%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="80"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>Endpoint Security (ESET)</span><span>92%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="92"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>Incident Response</span><span>85%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="85"></div></div>
+            </div>
+          </div>
+
             <div class="skill-bar-row">
               <div class="skill-bar-label"><span>Endpoint Security (ESET)</span><span>92%</span></div>
               <div class="skill-bar-track"><div class="skill-bar-fill" data-level="92"></div></div>
@@ -370,6 +431,18 @@
               <div class="skill-bar-track"><div class="skill-bar-fill" data-level="84"></div></div>
             </div>
           </div>
+
+          <div class="skill-bars">
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>IP Surveillance / CCTV</span><span>88%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="88"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>Access Control Systems</span><span>84%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="84"></div></div>
+            </div>
+          </div>
+
           <div class="skill-tags">
             <span class="tag">IP Surveillance</span>
             <span class="tag">DVR / NVR Config</span>
@@ -394,6 +467,18 @@
               <div class="skill-bar-track"><div class="skill-bar-fill" data-level="90"></div></div>
             </div>
           </div>
+
+          <div class="skill-bars">
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>ICT Operations Management</span><span>95%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="95"></div></div>
+            </div>
+            <div class="skill-bar-row">
+              <div class="skill-bar-label"><span>Team Training & Mentoring</span><span>90%</span></div>
+              <div class="skill-bar-track"><div class="skill-bar-fill" data-level="90"></div></div>
+            </div>
+          </div>
+          
           <div class="skill-tags">
             <span class="tag">ICT Operations</span>
             <span class="tag">Technical Documentation</span>
@@ -751,43 +836,13 @@
       <span class="term-title">ogechi@portfolio:~</span>
       <button id="termClose" aria-label="Close terminal">✕</button>
     </div>
-    <div id="termOutput" aria-live="polite" aria-label="Terminal output"></div>
+    <div id="termOutput" aria-live="polite"></div>
     <div class="term-input-row">
       <span aria-hidden="true">ogechi@portfolio:~$</span>
-      <input type="text" id="termInput" placeholder="type a command…" autocomplete="off" spellcheck="false" aria-label="Terminal input" />
+      <input type="text" id="termInput" placeholder="type a command…"
+             autocomplete="off" spellcheck="false" aria-label="Terminal input" />
     </div>
   </div>
-
-
-  <!-- ── small CSS patch for theme icon visibility ─ -->
-  <style>
-    .theme-icon-light { display: none; }
-    [data-theme="light"] .theme-icon-dark  { display: none; }
-    [data-theme="light"] .theme-icon-light { display: inline; }
-    /* second terminal button alias */
-    button#openTerminal2 {
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-family: var(--font-mono);
-      font-size: .75rem;
-      color: var(--text-muted);
-      padding: 8px 14px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 28px;
-      transition: border-color .25s, color .25s;
-    }
-    button#openTerminal2:hover { border-color: var(--copper); color: var(--copper); }
-    button#openTerminal2 kbd {
-      background: var(--copper-faint);
-      border: 1px solid var(--copper);
-      color: var(--copper);
-      padding: 1px 6px;
-      border-radius: 4px;
-    }
-  </style>
 
   <script src="script.js"></script>
 </body>
